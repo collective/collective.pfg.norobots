@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.pfg.norobots">
+
+    <upgradeStep
+        source="*"
+        destination="1000"
+        title="Upgrade"
+        description=""
+        profile="collective.pfg.norobots:default"
+        handler=".upgrades.common"
+        />
+
+</configure>
