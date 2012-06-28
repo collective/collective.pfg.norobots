@@ -13,6 +13,8 @@ fake-eggs
 parts
 dist
 var
+include
+lib
 .installed.cfg
 .mr.developer.cfg
 .hg
@@ -21,4 +23,6 @@ var
 *.pyc
 *.pyo
 *.tmp*
+.Python
 REAME.html
+buildout.cfg

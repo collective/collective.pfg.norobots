@@ -32,8 +32,10 @@ setup(name='collective.pfg.norobots',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'z3c.jbot'
+          'z3c.jbot',
           # -*- Extra requirements: -*-
+          'collective.z3cform.norobots',
+          'Products.PloneFormGen',
       ],
       tests_require=tests_require,
       extras_require={'test': tests_require},
