@@ -28,7 +28,7 @@
     
   <genericsetup:registerProfile
       name="default"
-      title="collective.pfg.norobots"
+      title="Norobots captcha field for PloneFormGen (collective.pfg.norobots)"
       directory="profiles/default"
       description="Installs the collective.pfg.norobots package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
