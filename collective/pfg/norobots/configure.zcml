@@ -7,6 +7,9 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.pfg.norobots">
 
+  <include package="Products.PloneFormGen" />
+  <include package="collective.z3cform.norobots" />
+
   <five:registerPackage package="." initialize=".initialize" />
   <includeDependencies package="." /><!-- Else tests are broken -->
   
@@ -20,11 +23,8 @@
         directory="static"
         />
   
-  <!-- j3c.jbot overrides -->
-  <include package="z3c.jbot" file="meta.zcml" /><!-- Else tests are broken -->
-  <browser:jbot
-      directory="jbot"
-      layer=".browser.interfaces.IThemeSpecific" />
+  <!-- Skin directory -->
+  <cmf:registerDirectory name="norobots_pfg_field"  directory="skins" recursive="True" />
     
   <genericsetup:registerProfile
       name="default"
