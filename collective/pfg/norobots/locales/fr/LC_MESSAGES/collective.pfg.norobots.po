@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.pfg.norobots\n"
-"POT-Creation-Date: 2012-02-25 11:05+0000\n"
+"POT-Creation-Date: 2012-07-06 22:14+0000\n"
 "PO-Revision-Date: 2010-11-13 11:07+0100\n"
 "Last-Translator: Sylvain Boureliou [sylvainb] <sylvain.boureliou@gmail.com>\n"
 "Language-Team: French <plone-fr@lists.plone.org>\n"
@@ -16,4 +16,46 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.pfg.norobots\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+#: ./field.py:53
+msgid "Are you a human ?"
+msgstr "Etes-vous un être humain ?"
+
+#: ./profiles/default/types/FormNorobotsField.xml
+msgid "Extension for PloneFormGen. Field that prevents automatic page submit."
+msgstr "Extension pour PloneFormGen. Champ qui permet d'éviter la soumission automatique du formulaire."
+
+#: ./field.py:54
+msgid "In order to avoid spam, please answer the question below."
+msgstr "Dans le but d'éviter l'envoi de spams, merci de répondre à la question ci-dessous."
+
+#: Profile description in configure.zcml
+msgid "Installs the collective.pfg.norobots package"
+msgstr "Installe le module collective.pfg.norobots"
+
+#. Default: "Norobots Captcha Field"
+#: ./profiles/default/types/FormNorobotsField.xml
+msgid "Norobots Captcha Field"
+msgstr "Champ captcha Norobots"
+
+#: Profile title in configure.zcml
+msgid "Norobots captcha field for PloneFormGen (collective.pfg.norobots)"
+msgstr "Captcha Norobots pour PloneFormGen (collective.pfg.norobots)"
+
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:30
+msgid "Question"
+msgstr "Question"
+
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:27
+msgid "You entered a wrong answer, please answer the new question below."
+msgstr "Vous avez entré une réponse fausse, merci de répondre à la nouvelle question ci-dessous."
+
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:33
+msgid "Your answer"
+msgstr "Votre réponse"
+
+#. Default: "Required"
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:12
+msgid "title_required"
+msgstr "Requis"
 
