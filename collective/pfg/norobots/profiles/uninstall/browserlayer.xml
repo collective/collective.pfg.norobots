@@ -1,4 +1,0 @@
-<layers>
-    <layer name="collective.pfg.norobots Module Theme" remove="True"
-           interface="collective.pfg.norobots.browser.interfaces.IThemeSpecific" />
-</layers>

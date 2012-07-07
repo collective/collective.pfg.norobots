@@ -13,15 +13,7 @@
   <five:registerPackage package="." initialize=".initialize" />
   <includeDependencies package="." /><!-- Else tests are broken -->
   
-  <include package=".browser" />
-  
   <i18n:registerTranslations directory="locales" />
-  
-  <!-- Static resources at /++resources++collective.pfg.norobots -->
-  <browser:resourceDirectory
-        name="collective.pfg.norobots"
-        directory="static"
-        />
   
   <!-- Skin directory -->
   <cmf:registerDirectory name="norobots_pfg_field"  directory="skins" recursive="True" />
