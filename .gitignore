@@ -26,3 +26,6 @@ lib
 .Python
 REAME.html
 buildout.cfg
+.coverage
+coverage.xml
+htmlcov

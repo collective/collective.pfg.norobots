@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 version = '1.0dev'
 
-tests_require = ['zope.testing', 'plone.app.testing']
+tests_require = ['zope.testing', 'plone.testing', 'plone.app.testing']
 
 setup(name='collective.pfg.norobots',
       version=version,
@@ -26,7 +26,8 @@ setup(name='collective.pfg.norobots',
       author_email='sylvain.boureliou@gmail.com',
       url='https://github.com/sylvainb/collective.pfg.norobots',
       license='gpl',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages('src'),
+      package_dir={'': 'src'},
       namespace_packages=['collective', 'collective.pfg'],
       include_package_data=True,
       zip_safe=False,
