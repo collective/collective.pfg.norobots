@@ -78,5 +78,18 @@ Launch tests::
 Credits
 -------
 
-    * Sylvain Boureliou [sylvainb]
+    * Sylvain Boureliou [sylvainb] - `GitHub <https://github.com/sylvainb>`_ - `Website <http://www.asilax.fr/>`_
+
+
+Source code
+-----------
+
+`Source code <https://github.com/sylvainb/collective.pfg.norobots>`_ is hosted on Github.
+
+How to contribute and submit a patch ?
+--------------------------------------
+
+`Source code <https://github.com/sylvainb/collective.pfg.norobots>`_ and an `issue tracker <https://github.com/sylvainb/collective.pfg.norobots/issues>`_ is hosted on Github.
+
+
 
