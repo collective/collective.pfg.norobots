@@ -1,25 +1,43 @@
-from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
-from plone.app.testing import applyProfile
 
-from zope.configuration import xmlconfig
+from plone.testing import z2
+
+from Products.CMFCore.utils import getToolByName
 
 class PloneModuleSandboxLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE, )
 
     def setUpZope(self, app, configurationContext):
-        # Load ZCML for this package
+        # Load ZCML, install the products and call its initialize() function 
+        
+        import Products.PloneFormGen
+        self.loadZCML(package=Products.PloneFormGen)
+        z2.installProduct(app, 'Products.PloneFormGen')
+        
         import collective.pfg.norobots
-        xmlconfig.file('configure.zcml',
-                       collective.pfg.norobots,
-                       context=configurationContext)
-
-
+        self.loadZCML(package=collective.pfg.norobots)
+        z2.installProduct(app, 'collective.pfg.norobots')
+        
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.pfg.norobots:default')
+        # Configure the products using the Quick Installer tool 
+        portal_quickinstaller = getToolByName(portal, 'portal_quickinstaller')
+        portal_quickinstaller.installProducts( ('Products.PloneFormGen',
+                                                'collective.pfg.norobots',) )
+
+    def tearDownZope(self, app):
+        # Uninstall products
+        z2.uninstallProduct(app, 'collective.pfg.norobots')
+        z2.uninstallProduct(app, 'Products.PloneFormGen')
+
+    def tearDownPloneSite(self, portal):
+        # Unconfigure the products using the Quick Installer tool
+        portal_quickinstaller = getToolByName(portal, 'portal_quickinstaller')
+        portal_quickinstaller.uninstallProducts( ('collective.pfg.norobots',
+                                                  'Products.PloneFormGen',) )
 
 PLONEMODULE_FIXTURE = PloneModuleSandboxLayer()
 PLONEMODULE_INTEGRATION_TESTING = \

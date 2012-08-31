@@ -1,18 +1,9 @@
 import string
 import unittest2 as unittest
 
-from plone.app.testing import login
-
 from Products.CMFCore.utils import getToolByName
 
-from collective.pfg.norobots.field import HIDDEN_FIELDS
-from collective.pfg.norobots.widget import NorobotsWidget
-
 from collective.pfg.norobots.testing import PLONEMODULE_INTEGRATION_TESTING
-
-_marker = object()
-
-CAPTCHA_ID_1 = 'norobots_1'
 
 class TestInstall(unittest.TestCase):
 
@@ -21,79 +12,88 @@ class TestInstall(unittest.TestCase):
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
-        self.qi_tool = getToolByName(self.portal, 'portal_quickinstaller')
+        self.request = self.layer['request']
     
     def test_product_is_installed(self):
         """ Validate that our products GS profile has been run and the product 
             installed
         """
-        pid = 'collective.pfg.norobots'
-        installed = [p['id'] for p in self.qi_tool.listInstalledProducts()]
-        self.assertTrue(pid in installed,
+        portal_quickinstaller = getToolByName(self.portal, 'portal_quickinstaller')
+        self.assertTrue(portal_quickinstaller.isProductInstalled('collective.pfg.norobots'),
                         'package appears not to have been installed')
 
     def test_field_in_types(self):
-        pt = self.portal.portal_types
-        self.assertEqual("FormNorobotsField" in pt.objectIds(), True)
+        """ Validate that the field type is registered in the portal_type tool """
+        portal_types = getToolByName(self.portal, 'portal_types')
+        self.assertNotEqual(portal_types.getTypeInfo('FormNorobotsField'), None)
 
-    def test_fied_in_portal_factory(self):
-        pf = self.portal.portal_factory
-        self.assertEqual("FormNorobotsField" in pf.getFactoryTypes(), True)
+    def test_field_in_portal_factory(self):
+        """ Validate that the field type is registered in the portal_factory tool """
+        portal_factory = self.portal.portal_factory
+        self.assertEqual("FormNorobotsField" in portal_factory.getFactoryTypes(), True)
 
-    def test_field_workflow(self):
-        pw = self.portal.portal_workflow
-        default_chain = pw.getDefaultChain()
-        cf_chain = pw.getChainForPortalType('FormNorobotsField')
-        self.assertEqual(cf_chain == (), True)
+    def test_field_has_no_workflow(self):
+        """ Validate that the field has no workflow """
+        portal_workflow = getToolByName(self.portal, 'portal_workflow')
+        default_chain = portal_workflow.getDefaultChain()
+        field_chain = portal_workflow.getChainForPortalType('FormNorobotsField')
+        self.assertEqual(field_chain == (), True)
 
     def test_field_not_in_navtree(self):
-        navtree = self.portal.portal_properties.navtree_properties
-        mtNotToList = navtree.getProperty("metaTypesNotToList")
-        self.assertEqual('FormNorobotsField' in mtNotToList, True)
+        """ Validate that the field type is not listed in the navigation tree """
+        portal_properties = getToolByName(self.portal, 'portal_properties')
+        navtree_properties = portal_properties.navtree_properties
+        self.assertEqual('FormNorobotsField' in navtree_properties.getProperty("metaTypesNotToList"),
+                         True)
 
     def test_skins(self):
-        ps = self.portal.portal_skins
-        self.assertEqual("norobots_pfg_field" in ps.objectIds(), True)
-        for sname, spath in ps.getSkinPaths():
+        """ Validate that the skin directories are installed in the portal_skins tool
+            and available in the skin """
+        portal_skins = getToolByName(self.portal, 'portal_skins')
+        self.assertEqual("norobots_pfg_field" in portal_skins.objectIds(), True)
+        for sname, spath in portal_skins.getSkinPaths():
             paths = filter(None, map(string.strip, spath.split(',')))
             self.assertEqual("norobots_pfg_field" in paths, True,
-                '"norobots_pfg_field" layer not present in "%s" skin' % sname)
+                             '"norobots_pfg_field" layer not present in "%s" skin' % sname)
 
-"""
-class TestCaptchaField(unittest.TestCase):
+class TestUninstall(unittest.TestCase):
 
     layer = PLONEMODULE_INTEGRATION_TESTING
     
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
-        self.qi_tool = getToolByName(self.portal, 'portal_quickinstaller')
+        self.request = self.layer['request']
         
-        login(self.portal, 'admin')
-        self.portal.invokeFactory('Folder', 'folder')
-        self.portal.folder.invokeFactory('FormFolder', 'ff1')
-        self.ff1 = getattr(self.portal.folder, 'ff1')
-        self.ff1.invokeFactory('FormNorobotsField', CAPTCHA_ID_1)
+        # Remove the product using the Quick Installer tool
+        portal_quickinstaller = getToolByName(self.portal, 'portal_quickinstaller')
+        portal_quickinstaller.uninstallProducts( ('collective.pfg.norobots',) )
+        
+    def test_product_is_not_installed(self):
+        """ Validate that our products is not yet installed
+        """
+        portal_quickinstaller = getToolByName(self.portal, 'portal_quickinstaller')
+        self.assertFalse(portal_quickinstaller.isProductInstalled('collective.pfg.norobots'),
+                        'package appears to be already installed')
 
-    def test_schema(self):
-        cf = getattr(self.ff1, CAPTCHA_ID_1)
-        schema = cf.Schema()
-        for field in HIDDEN_FIELDS:
-            visibility = schema[field].widget.visible
-            self.assertEqual(visibility, {'view': 'invisible',
-                                          'edit': 'invisible'},
-                '"%s" field is not hidden, but %s:' % (field, visibility))
+    def test_field_not_in_types(self):
+        """ Validate that the field type is removed from the portal_type tool """
+        portal_types = getToolByName(self.portal, 'portal_types')
+        self.assertEqual(portal_types.getTypeInfo('FormNorobotsField'), None)
 
-    def test_field(self):
-        cf = getattr(self.ff1, CAPTCHA_ID_1)
-        fgField = getattr(cf, 'fgField', _marker)
-        self.assertNotEqual(fgField, _marker)
-        # Test fgField properties
-        self.assertEqual(type(fgField), StringField)
-        self.assertEqual(bool(fgField.searchable), False)
-        self.assertEqual(fgField.write_permission, View)
-        self.assertEqual(type(fgField.widget), NorobotsWidget)
-"""
+    #def test_field_not_in_portal_factory(self):
+    #    """ Validate that the field type is removed from the portal_factory tool """
+    #    portal_factory = self.portal.portal_factory
+    #    self.assertEqual("FormNorobotsField" in portal_factory.getFactoryTypes(), False)
+    #    ==> uninstall with the profile/uninstall/factorytool.xml doesn't work but the 
+    #        type disappear from the portal_factory ZMI user interface
 
-
-
+    def test_not_in_skins(self):
+        """ Validate that the skin directories is removed from the portal_skins tool
+            and from the skin """
+        portal_skins = getToolByName(self.portal, 'portal_skins')
+        self.assertNotEqual("norobots_pfg_field" in portal_skins.objectIds(), True)
+        for sname, spath in portal_skins.getSkinPaths():
+            paths = filter(None, map(string.strip, spath.split(',')))
+            self.assertNotEqual("norobots_pfg_field" in paths, True,
+                                '"norobots_pfg_field" layer present in "%s" skin' % sname)
