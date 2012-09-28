@@ -34,9 +34,9 @@ Screenshot
 ------------
 
 .. image:: https://github.com/sylvainb/collective.pfg.norobots/raw/master/docs/collective-pfg-norobots-screenshot.png
-   :height: 1039px
-   :width: 1026px
-   :scale: 70 %
+   :height: 392px
+   :width: 552px
+   :scale: 100 %
    :alt: Screenshot
    :align: center
 
