@@ -7,6 +7,8 @@ from plone.testing import z2
 
 from Products.CMFCore.utils import getToolByName
 
+from collective.pfg.norobots.tests.utils import PLONE_VERSION
+
 class PloneModuleSandboxLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE, )
@@ -42,4 +44,7 @@ class PloneModuleSandboxLayer(PloneSandboxLayer):
 PLONEMODULE_FIXTURE = PloneModuleSandboxLayer()
 PLONEMODULE_INTEGRATION_TESTING = \
     IntegrationTesting(bases=(PLONEMODULE_FIXTURE, ),
-                       name="PloneModule:Integration")
+                       name="collective.pfg.norobots:Integration")
+NOROBOTS_FUNCTIONNAL_TESTING = \
+    FunctionalTesting(bases=(PLONEMODULE_FIXTURE, ),
+                      name="collective.pfg.norobots:Integration")

@@ -16,4 +16,8 @@ exclude_lines =
     if 0:
     if __name__ == .__main__.:
 
+omit =
+    *collective/pfg/norobots/testing.py
+    *collective/pfg/norobots/tests/*
+
 ignore_errors = True
