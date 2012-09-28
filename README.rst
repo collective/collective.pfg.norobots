@@ -8,12 +8,27 @@ collective.pfg.norobots
 Overview
 --------
 
-collective.pfg.norobots is an installable Plone module.
+``collective.pfg.norobots`` is a ``PloneFormGen`` field using ``collective.z3cform.norobots``.
+
+``collective.z3cform.norobots`` provides a "human" captcha widget based on a list of
+question/answer(s).
+
+This captcha can be used : 
+
+    * as a ``plone.app.discussion`` (Plone Discussions) captcha plugin 
+    
+    * as a ``z3c form`` field
+    
+    * as a PloneFormGen field with `collective.pfg.norobots`_
 
 Requirements
 ------------
 
-    * Tested with Plone 4.1.5 (http://plone.org/products/plone)
+I have tested this release with :
+
+    * Plone 4.2.1.1 & PloneFormGen 1.7.2 & collective.z3cform.norobots 1.4.2
+    
+    * Plone 4.1.6 & PloneFormGen 1.7.2 & collective.z3cform.norobots 1.4.2
 
 Screenshot
 ------------
@@ -62,8 +77,8 @@ Download ``collective.pfg.norobots`` and use ``virtualenv`` and ``buildout`` to 
 	virtualenv .
 	source bin/activate
 	(collective.pfg.norobots) easy_install zc.buildout 
-	!!! check the buildout content before running !!!
-	(collective.pfg.norobots) ln -s test-plone-4.1.x.cfg buildout.cfg
+	!!! check the buildout config file ``test-plone-base.cfg`` before running !!!
+	(collective.pfg.norobots) ln -s test-plone-4.2.x.cfg buildout.cfg
 	(collective.pfg.norobots) python bootstrap.py
 	(collective.pfg.norobots) bin/buildout
 	[...] be patient... [...]
@@ -75,11 +90,18 @@ Launch tests::
 
 	(collective.pfg.norobots) ./bin/test -s collective.pfg.norobots
 
+Launch code coverage::
+
+    (collective.pfg.norobots) bin/coverage
+    (collective.pfg.norobots) bin/report
+    And open with a browser htmlcov/index.html
+
 Credits
 -------
 
-    * Sylvain Boureliou [sylvainb] - `GitHub <https://github.com/sylvainb>`_ - `Website <http://www.asilax.fr/>`_
-
+* Sylvain Boureliou [sylvainb] - `GitHub <https://github.com/sylvainb>`_ - `Website <http://www.asilax.fr/>`_
+* `Planet Makina Corpus <http://www.makina-corpus.org>`_ - `Makina Corpus <http://www.makina-corpus.com>`_
+* `Contact us <mailto:python@makina-corpus.org>`_
 
 Source code
 -----------
