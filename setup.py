@@ -13,9 +13,7 @@ setup(name='collective.pfg.norobots',
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Intended Audience :: Developers",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         "Programming Language :: Python",
