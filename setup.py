@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-version = '1.0dev'
+version = '1.0'
 
 tests_require = ['zope.testing', 'plone.testing', 'plone.app.testing']
 
