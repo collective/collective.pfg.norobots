@@ -1,30 +1,8 @@
 <metal:view_macro define-macro="edit"
-	              i18n:domain="collective.pfg.norobots">
+                  i18n:domain="collective.pfg.norobots">
 
-<div class="field" 
-	 tal:define="question here/@@norobots/get_question;
-	             error    python:errors.get(fieldName, None)"
-	 tal:attributes="class python:error and 'field error' or 'field'">
-	 
-  <div class="formQuestion label">
-      <span tal:replace="python:widget.Label(here)" 
-            i18n:translate="" />
-      <span class="required"
-            title="Required"
-            i18n:attributes="title title_required;"
-            style="color: #f00;">
-      </span>
-  </div>
-  <div class="formHelp"
-       tal:define="description python:widget.Description(here)"
-       tal:content="structure description"
-       tal:attributes="id string:${fieldName}_help"
-       i18n:translate="">
-    Help
-  </div>
-  
-  <div class="fieldErrorBox" tal:condition="error"
-  	   i18n:translate="">You entered a wrong answer, please answer the new question below.</div>
+<metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+  <metal:widget_body fill-slot="widget_body" tal:define="question here/@@norobots/get_question;">
   
   <strong><span i18n:translate="">Question</span></strong>:
   <span i18n:domain="collective.z3cform.norobots" i18n:translate="" tal:content="python:question['title']" /><br />
@@ -32,7 +10,7 @@
   <strong><span i18n:translate="">Your answer</span></strong>:
   
   <input type="text" tabindex="" name="" size="10" value=""
- 	     tal:attributes="name fieldName"/>
+       tal:attributes="name fieldName"/>
                      
   <input type="hidden" name="fieldName_question_id" value=""
          tal:attributes="value python:question['id'];
@@ -41,6 +19,7 @@
          tal:attributes="value python:question['id_check'];
                          name  python:'%s_id_check' % fieldName" />
          
-</div>
+  </metal:widget_body>
+</metal:use>
 
 </metal:view_macro>
