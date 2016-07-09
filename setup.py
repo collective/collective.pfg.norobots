@@ -13,11 +13,12 @@ setup(name='collective.pfg.norobots',
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Framework :: Plone :: 4.1",
-        "Framework :: Plone :: 4.2",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+          "Framework :: Plone",
+          "Framework :: Plone :: 5.0",
+          "Framework :: Plone :: 4.3",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2.7",
+          "Topic :: Software Development :: Libraries :: Python Modules"
         ],
       keywords='plone web zope python ploneformgen field captcha',
       author='Sylvain Boureliou [sylvainb]',
