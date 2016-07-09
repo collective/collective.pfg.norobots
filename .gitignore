@@ -29,3 +29,4 @@ buildout.cfg
 .coverage
 coverage.xml
 htmlcov
+.eggs
