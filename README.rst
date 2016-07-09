@@ -15,18 +15,21 @@ question/answer(s).
 
 This captcha can be used :
 
+    * as a PloneFormGen field with `collective.pfg.norobots`_
+
     * as a ``plone.app.discussion`` (Plone Discussions) captcha plugin
 
     * as a ``z3c form`` field
 
-    * as a PloneFormGen field with `collective.pfg.norobots`_
+    * as a macro in a custom form
 
 Requirements
 ------------
 
 I have tested this release with :
 
-    * Plone 4.3.4 & PloneFormGen 1.7.16 & collective.z3cform.norobots 1.4.2.2
+    * Plone 5.0.5 & PloneFormGen 1.8.1 & collective.z3cform.norobots 1.4.3
+    * Plone 4.3.10 & PloneFormGen 1.7.19 & collective.z3cform.norobots 1.4.3
 
 Screenshot
 ------------
@@ -63,7 +66,7 @@ Or, you can add it as a dependency on your own product *setup.py*::
 Enabling the module
 ~~~~~~~~~~~~~~~~~~~~
 
-    Install the module from the Add-ons control panel. That's it!
+Install PloneFormGen (if not already done) then collective.pfg.norobots from the Add-ons control panel. That's it!
 
 Quickly test ?
 ~~~~~~~~~~~~~~~~~~~~
@@ -76,7 +79,7 @@ Download ``collective.pfg.norobots`` and use ``virtualenv`` and ``buildout`` to 
 	source bin/activate
 	(collective.pfg.norobots) easy_install zc.buildout
 	!!! check the buildout config file ``test-plone-base.cfg`` before running !!!
-	(collective.pfg.norobots) ln -s test-plone-4.2.x.cfg buildout.cfg
+	(collective.pfg.norobots) ln -s test-plone-5.0.x.cfg buildout.cfg
 	(collective.pfg.norobots) python bootstrap.py
 	(collective.pfg.norobots) bin/buildout
 	[...] be patient... [...]
@@ -86,6 +89,7 @@ Go to http://localhost:8080, add a new Plone Site and install collective.pfg.nor
 
 Launch tests::
 
+    (collective.pfg.norobots) pip install unittest2
 	(collective.pfg.norobots) ./bin/test -s collective.pfg.norobots
 
 Launch code coverage::
@@ -95,12 +99,10 @@ Launch code coverage::
     And open with a browser htmlcov/index.html
 
 Credits
--------
+-----------------
 
-* Sylvain Boureliou [sylvainb] - `GitHub <https://github.com/sylvainb>`_ - `Website <http://www.asilax.fr/>`_
-* `Planet Makina Corpus <http://www.makina-corpus.org>`_ - `Makina Corpus <http://www.makina-corpus.com>`_
-* `Contact us <mailto:python@makina-corpus.org>`_
-* `Contributors <https://github.com/sylvainb/collective.pfg.norobots/graphs/contributors>`_
+* Sylvain Boureliou [sylvainb] - `GitHub <https://github.com/sylvainb>`_ - `Website <https://www.boureliou.com/>`_
+* Makina Corpus `Makina Corpus <http://www.makina-corpus.com>`_
 
 Source code
 -----------
@@ -112,5 +114,9 @@ How to contribute and submit a patch ?
 
 `Source code <https://github.com/sylvainb/collective.pfg.norobots>`_ and an `issue tracker <https://github.com/sylvainb/collective.pfg.norobots/issues>`_ is hosted on Github.
 
-
+Contributors
+-----------------
+* Sylvain Boureliou [sylvainb]
+* Kim Chee Leong [kcleong]
+* Pawel Lewicki [lewicki]
 
