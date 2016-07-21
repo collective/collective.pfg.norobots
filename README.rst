@@ -28,8 +28,8 @@ Requirements
 
 I have tested this release with :
 
-    * Plone 5.0.5 & PloneFormGen 1.8.1 & collective.z3cform.norobots 1.4.3
-    * Plone 4.3.10 & PloneFormGen 1.7.19 & collective.z3cform.norobots 1.4.3
+    * Plone 5.0.5 & PloneFormGen 1.8.1 & collective.z3cform.norobots 1.4.4
+    * Plone 4.3.10 & PloneFormGen 1.7.19 & collective.z3cform.norobots 1.4.4
 
 Screenshot
 ------------
