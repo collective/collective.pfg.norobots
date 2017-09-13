@@ -86,7 +86,7 @@ class FormNorobotsField(FGStringField):
         
         norobots = getMultiAdapter((self, REQUEST), name='norobots')
         if not norobots.verify(value, question_id, id_check):
-            return str('Wrong answer')
+            return _(u"Wrong answer")
         
         return 0
     
