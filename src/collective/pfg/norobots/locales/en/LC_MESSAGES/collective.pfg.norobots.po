@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.pfg.norobots\n"
-"POT-Creation-Date: 2012-07-06 22:14+0000\n"
+"POT-Creation-Date: 2017-09-13 13:48+0000\n"
 "PO-Revision-Date: 2012-04-25 18:00+0000\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "In order to avoid spam, please answer the question below."
 msgstr ""
 
-#: Profile description in configure.zcml
+#: ./configure.zcml:27
 msgid "Installs the collective.pfg.norobots package"
 msgstr ""
 
@@ -36,24 +36,26 @@ msgstr ""
 msgid "Norobots Captcha Field"
 msgstr ""
 
-#: Profile title in configure.zcml
+#: ./configure.zcml:27
 msgid "Norobots captcha field for PloneFormGen (collective.pfg.norobots)"
 msgstr ""
 
-#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:30
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:7
 msgid "Question"
 msgstr ""
 
-#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:27
-msgid "You entered a wrong answer, please answer the new question below."
+#: ./configure.zcml:34
+msgid "Uninstalls the collective.pfg.norobots package"
 msgstr ""
 
-#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:33
+#: ./field.py:89
+msgid "Wrong answer"
+msgstr ""
+
+#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:10
 msgid "Your answer"
 msgstr ""
 
-#. Default: "Required"
-#: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:12
-msgid "title_required"
+#: ./configure.zcml:34
+msgid "collective.pfg.norobots uninstall"
 msgstr ""
-

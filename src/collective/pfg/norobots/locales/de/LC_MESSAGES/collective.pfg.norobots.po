@@ -1,50 +1,48 @@
-# Translation of collective.pfg.norobots.pot to French
-# French Translation Team "plone-fr" <plone-fr@lists.plone.org>
+# Gettext Message File for collective.pfg.norobots
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.pfg.norobots\n"
 "POT-Creation-Date: 2017-09-13 13:48+0000\n"
-"PO-Revision-Date: 2010-11-13 11:07+0100\n"
-"Last-Translator: Sylvain Boureliou [sylvainb] <sylvain.boureliou@gmail.com>\n"
-"Language-Team: French <plone-fr@lists.plone.org>\n"
+"PO-Revision-Date: 2017-09-13 18:00+0000\n"
+"Last-Translator: ksuess <k.suess@rohberg.ch>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language-Code: fr\n"
-"Language-Name: French\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.pfg.norobots\n"
-"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
 #: ./field.py:53
 msgid "Are you a human ?"
-msgstr "Etes-vous un être humain ?"
+msgstr "Captcha"
 
 #: ./profiles/default/types/FormNorobotsField.xml
 msgid "Extension for PloneFormGen. Field that prevents automatic page submit."
-msgstr "Extension pour PloneFormGen. Champ qui permet d'éviter la soumission automatique du formulaire."
+msgstr "Erweiterung für PloneFormGen. Ein Feld, welches das automatisierte Senden des Formulars verhindert."
 
 #: ./field.py:54
 msgid "In order to avoid spam, please answer the question below."
-msgstr "Dans le but d'éviter l'envoi de spams, merci de répondre à la question ci-dessous."
+msgstr "Um Spam zu vermeiden, beantworten Sie bitte folgende Frage."
 
 #: ./configure.zcml:27
 msgid "Installs the collective.pfg.norobots package"
-msgstr "Installe le module collective.pfg.norobots"
+msgstr ""
 
 #. Default: "Norobots Captcha Field"
 #: ./profiles/default/types/FormNorobotsField.xml
 msgid "Norobots Captcha Field"
-msgstr "Champ captcha Norobots"
+msgstr "Norobots-Captcha-Feld"
 
 #: ./configure.zcml:27
 msgid "Norobots captcha field for PloneFormGen (collective.pfg.norobots)"
-msgstr "Captcha Norobots pour PloneFormGen (collective.pfg.norobots)"
+msgstr ""
 
 #: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:7
 msgid "Question"
-msgstr "Question"
+msgstr "Frage"
 
 #: ./configure.zcml:34
 msgid "Uninstalls the collective.pfg.norobots package"
@@ -52,11 +50,11 @@ msgstr ""
 
 #: ./field.py:89
 msgid "Wrong answer"
-msgstr "Vous avez entré une réponse fausse, merci de répondre à la nouvelle question ci-dessous."
+msgstr "Falsche Antwort"
 
 #: ./skins/norobots_pfg_field/norobots_pfg_widget.pt:10
 msgid "Your answer"
-msgstr "Votre réponse"
+msgstr "Ihre Antwort"
 
 #: ./configure.zcml:34
 msgid "collective.pfg.norobots uninstall"
